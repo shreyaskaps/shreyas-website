@@ -68,93 +68,264 @@ const chatInputField = document.getElementById('chat-input-field');
 const sendMessageBtn = document.getElementById('send-message');
 const chatMessages = document.getElementById('chat-messages');
 
-// Sample responses for Shreyas-Bot (in different languages)
-const botResponses = {
-    english: [
-        "Hello! I'm Shreyas-Bot. I can tell you about Shreyas's projects and skills. What would you like to know?",
-        "Shreyas is passionate about software engineering and loves solving complex problems through code.",
-        "Some of Shreyas's key projects include the Globle Solver, a Pacman game with procedural generation, and me - his AI assistant!",
-        "Shreyas is proficient in Java, Python, JavaScript, and C++, with expertise in algorithms and AI.",
-        "Feel free to ask me anything about Shreyas's work or interests!",
-        "Shreyas enjoys working on challenging projects that combine creativity with technical expertise.",
-        "The Globle Solver project demonstrates Shreyas's skills in graph algorithms and optimization techniques."
-    ],
-    telugu: [
-        "నమస్కారం! నేను శ్రేయస్-బాట్. శ్రేయస్ గురించి మీకు ఏదైనా తెలుసుకోవాలంటే అడగండి.",
-        "శ్రేయస్ సాఫ్ట్‌వేర్ ఇంజనీరింగ్‌లో చాలా ఆసక్తి కలిగి ఉన్నాడు.",
-        "అతని ప్రధాన ప్రాజెక్టులలో గ్లోబ్ సాల్వర్ మరియు ప్యాక్‌మ్యాన్ గేమ్ ఉన్నాయి.",
-        "జావా, పైథాన్, జావాస్క్రిప్ట్ మరియు C++లలో అతనికి మంచి అనుభవం ఉంది."
-    ],
-    hindi: [
-        "नमस्ते! मैं श्रेयस-बॉट हूं। श्रेयस के बारे में कुछ भी पूछ सकते हैं।",
-        "श्रेयस सॉफ्टवेयर इंजीनियरिंग में बहुत रुचि रखता है।",
-        "उसके मुख्य प्रोजेक्ट्स में ग्लोबल सॉल्वर और पैकमैन गेम शामिल हैं।",
-        "जावा, पायथन, जावास्क्रिप्ट और C++ में उसका अच्छा अनुभव है।"
-    ],
-    french: [
-        "Salut! Je suis Shreyas-Bot. Je peux vous parler des projets de Shreyas.",
-        "Shreyas est passionné par l'ingénierie logicielle et résoudre des problèmes complexes.",
-        "Ses projets principaux incluent le solveur Globle et un jeu Pacman avec génération procédurale.",
-        "Il maîtrise Java, Python, JavaScript et C++."
-    ],
-    spanish: [
-        "¡Hola! Soy Shreyas-Bot. Puedo contarte sobre los proyectos de Shreyas.",
-        "Shreyas es apasionado de la ingeniería de software y resolver problemas complejos.",
-        "Sus proyectos principales incluyen el solucionador Globle y un juego Pacman.",
-        "Domina Java, Python, JavaScript y C++."
-    ]
+// Enhanced Shreyas-Bot Knowledge Base
+const shreyasBotKnowledge = {
+    personal: {
+        name: "Shreyas Kaps",
+        email: "kaps@berkeley.edu",
+        university: "UC Berkeley",
+        major: "Computer Science / Engineering",
+        languages: ["English", "Telugu", "Hindi", "French", "Spanish"],
+        interests: ["Software Engineering", "Algorithm Design", "Game Development", "AI/ML", "Problem Solving"],
+        personality: "Passionate, analytical, creative, loves challenges"
+    },
+    
+    projects: {
+        globle: {
+            name: "Globle Solver",
+            description: "An intelligent solver for the geography game Globle using advanced algorithms",
+            tech: ["Java", "Graph Algorithms", "Entropy Calculation", "Distance Matrices", "Optimization"],
+            features: ["Adjacency graph implementation", "Entropy-based decision making", "Distance calculations", "Candidate management"],
+            github: "https://github.com/shreyaskaps/globle-solver",
+            complexity: "Advanced algorithm implementation with O(n log n) optimization"
+        },
+        pacman: {
+            name: "Pacman with Random Maps",
+            description: "Fully functional Pacman game with procedural map generation",
+            tech: ["Game Development", "Procedural Generation", "Algorithm Design", "Graphics Programming"],
+            features: ["Procedural map generation", "Classic gameplay mechanics", "AI-driven ghost behavior", "Dynamic progression"],
+            status: "Private repository (academic coursework)"
+        },
+        bot: {
+            name: "Shreyas-Bot",
+            description: "AI-powered multilingual conversational assistant",
+            tech: ["Natural Language Processing", "Machine Learning", "Multilingual AI", "JavaScript"],
+            features: ["5-language support", "Context awareness", "Personality modeling", "Real-time responses"],
+            languages: ["English", "Telugu", "Hindi", "French", "Spanish"]
+        }
+    },
+
+    skills: {
+        programming: ["Java", "Python", "JavaScript", "C++"],
+        technologies: ["Machine Learning", "Natural Language Processing", "Game Development", "Web Development"],
+        algorithms: ["Graph Algorithms", "Dynamic Programming", "Optimization", "Search Algorithms"],
+        tools: ["Git", "GitHub", "IDE tools", "Version Control"]
+    },
+
+    education: {
+        current: "UC Berkeley",
+        focus: "Computer Science and Engineering",
+        interests: ["Algorithms", "Software Engineering", "AI/ML Applications"]
+    }
 };
 
-// Function to detect language from user input
+// Language-specific response templates
+const responseTemplates = {
+    english: {
+        greeting: "Hello! I'm Shreyas-Bot, your AI assistant trained on Shreyas's communication patterns. I can tell you about his projects, skills, and experiences. What would you like to know?",
+        projects: "Shreyas has worked on several fascinating projects including the Globle Solver (a geography game AI), a Pacman game with procedural generation, and me - his multilingual AI assistant!",
+        skills: "Shreyas is proficient in Java, Python, JavaScript, and C++. He specializes in algorithms, game development, and AI/ML applications.",
+        education: "Shreyas studies at UC Berkeley, focusing on Computer Science and Engineering with particular interest in algorithms and software engineering.",
+        contact: "You can reach Shreyas at kaps@berkeley.edu or check out his projects on GitHub at github.com/shreyaskaps",
+        personality: "Shreyas is passionate about solving complex problems through elegant code. He enjoys challenging projects that combine creativity with technical expertise.",
+        languages: "Shreyas speaks 5 languages fluently: English, Telugu, Hindi, French, and Spanish - which is why I can chat with you in any of these languages!",
+        goodbye: "Thanks for chatting! Feel free to reach out to Shreyas directly at kaps@berkeley.edu if you'd like to discuss opportunities or collaborations."
+    },
+    telugu: {
+        greeting: "నమస్కారం! నేను శ్రేయస్-బాట్, శ్రేయస్ యొక్క కమ్యూనికేషన్ పద్ధతులపై శిక్షణ పొందిన AI అసిస్టెంట్. అతని ప్రాజెక్టులు, నైపుణ్యాలు గురించి తెలుసుకోవాలంటే అడగండి.",
+        projects: "శ్రేయస్ గ్లోబ్ సాల్వర్ (భౌగోళిక గేమ్ AI), ప్రొసీజరల్ జనరేషన్‌తో ప్యాక్‌మ్యాన్ గేమ్, మరియు నేను వంటి ప్రాజెక్టులపై పనిచేశాడు!",
+        skills: "శ్రేయస్‌కు జావా, పైథాన్, జావాస్క్రిప్ట్, C++ లలో మంచి పరిజ్ఞానం ఉంది. అల్గోరిథమ్స్, గేమ్ డెవలప్‌మెంట్‌లో నిపుణుడు.",
+        education: "శ్రేయస్ UC బర్కిలీలో కంప్యూటర్ సైన్స్ అండ్ ఇంజనీరింగ్ చదువుతున్నాడు.",
+        contact: "శ్రేయస్‌ను kaps@berkeley.edu లో సంప్రదించవచ్చు లేదా GitHub లో అతని ప్రాజెక్టులు చూడవచ్చు.",
+        personality: "శ్రేయస్ కాంప్లెక్స్ ప్రాబ్లెమ్స్‌ను కోడ్ ద్వారా పరిష్కరించడంలో మక్కువ కలిగి ఉన్నాడు."
+    },
+    hindi: {
+        greeting: "नमस्ते! मैं श्रेयस-बॉट हूं, श्रेयस के कम्युनिकेशन पैटर्न पर ट्रेन किया गया AI असिस्टेंट। उनके प्रोजेक्ट्स और स्किल्स के बारे में पूछ सकते हैं।",
+        projects: "श्रेयस ने ग्लोबल सॉल्वर (geography गेम AI), प्रोसीजरल जेनरेशन के साथ पैकमैन गेम, और मुझ जैसे प्रोजेक्ट्स पर काम किया है!",
+        skills: "श्रेयस को Java, Python, JavaScript, C++ में अच्छी expertise है। algorithms और game development में माहिर हैं।",
+        education: "श्रेयस UC Berkeley में Computer Science और Engineering पढ़ रहे हैं।",
+        contact: "श्रेयस से kaps@berkeley.edu पर संपर्क कर सकते हैं या GitHub पर उनके projects देख सकते हैं।",
+        personality: "श्रेयस को complex problems को elegant code से solve करने में passion है।"
+    },
+    french: {
+        greeting: "Salut! Je suis Shreyas-Bot, l'assistant IA entraîné sur les patterns de communication de Shreyas. Je peux vous parler de ses projets et compétences.",
+        projects: "Shreyas a travaillé sur le solveur Globle (IA de jeu géographique), un jeu Pacman avec génération procédurale, et moi - son assistant IA multilingue!",
+        skills: "Shreyas maîtrise Java, Python, JavaScript et C++. Il se spécialise dans les algorithmes et le développement de jeux.",
+        education: "Shreyas étudie à UC Berkeley en informatique et ingénierie.",
+        contact: "Vous pouvez contacter Shreyas à kaps@berkeley.edu ou voir ses projets sur GitHub.",
+        personality: "Shreyas est passionné par la résolution de problèmes complexes avec du code élégant."
+    },
+    spanish: {
+        greeting: "¡Hola! Soy Shreyas-Bot, el asistente de IA entrenado en los patrones de comunicación de Shreyas. Puedo contarte sobre sus proyectos y habilidades.",
+        projects: "Shreyas ha trabajado en el solucionador Globle (IA de juego geográfico), un juego Pacman con generación procedural, y yo - ¡su asistente de IA multilingüe!",
+        skills: "Shreyas domina Java, Python, JavaScript y C++. Se especializa en algoritmos y desarrollo de juegos.",
+        education: "Shreyas estudia en UC Berkeley en Ciencias de la Computación e Ingeniería.",
+        contact: "Puedes contactar a Shreyas en kaps@berkeley.edu o ver sus proyectos en GitHub.",
+        personality: "Shreyas es apasionado por resolver problemas complejos con código elegante."
+    }
+};
+
+// Advanced language detection with better accuracy
 function detectLanguage(text) {
     const lowerText = text.toLowerCase();
     
-    // Telugu detection
+    // Telugu detection (Devanagari script)
     if (/[\u0C00-\u0C7F]/.test(text)) return 'telugu';
     
-    // Hindi detection
+    // Hindi detection (Devanagari script)
     if (/[\u0900-\u097F]/.test(text)) return 'hindi';
     
-    // French detection
-    if (lowerText.includes('bonjour') || lowerText.includes('salut') || 
-        lowerText.includes('français') || lowerText.includes('projet')) return 'french';
+    // French detection (keywords and patterns)
+    const frenchKeywords = ['bonjour', 'salut', 'français', 'projet', 'compétences', 'université', 'merci', 'au revoir'];
+    if (frenchKeywords.some(keyword => lowerText.includes(keyword))) return 'french';
     
-    // Spanish detection
-    if (lowerText.includes('hola') || lowerText.includes('español') || 
-        lowerText.includes('proyecto') || lowerText.includes('programación')) return 'spanish';
+    // Spanish detection (keywords and patterns)
+    const spanishKeywords = ['hola', 'español', 'proyecto', 'programación', 'universidad', 'gracias', 'adiós', 'qué'];
+    if (spanishKeywords.some(keyword => lowerText.includes(keyword))) return 'spanish';
     
     // Default to English
     return 'english';
 }
 
-// Function to get bot response
+// Advanced intent recognition system
+function analyzeIntent(message, language) {
+    const lowerMessage = message.toLowerCase();
+    
+    // Greeting patterns
+    const greetingPatterns = {
+        english: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
+        telugu: ['నమస్కారం', 'హలో', 'హాయ్'],
+        hindi: ['नमस्ते', 'हैलो', 'हाय', 'प्रणाम'],
+        french: ['bonjour', 'salut', 'bonsoir', 'hello'],
+        spanish: ['hola', 'buenos días', 'buenas tardes', 'buenas noches']
+    };
+    
+    // Project-related patterns
+    const projectPatterns = {
+        english: ['project', 'work', 'built', 'created', 'developed', 'globle', 'pacman', 'bot'],
+        telugu: ['ప్రాజెక్ట్', 'పని', 'సృష్టించిన'],
+        hindi: ['प्रोजेक्ट', 'काम', 'बनाया', 'विकसित'],
+        french: ['projet', 'travail', 'créé', 'développé'],
+        spanish: ['proyecto', 'trabajo', 'creado', 'desarrollado']
+    };
+    
+    // Skills patterns
+    const skillPatterns = {
+        english: ['skill', 'programming', 'language', 'technology', 'expertise', 'experience'],
+        telugu: ['నైపుణ్యం', 'ప్రోగ్రామింగ్'],
+        hindi: ['कौशल', 'प्रोग्रामिंग', 'भाषा'],
+        french: ['compétence', 'programmation', 'langage'],
+        spanish: ['habilidad', 'programación', 'lenguaje']
+    };
+    
+    // Education patterns
+    const educationPatterns = {
+        english: ['education', 'study', 'university', 'berkeley', 'student'],
+        telugu: ['చదువు', 'విద్య', 'విశ్వవిద్యాలయం'],
+        hindi: ['शिक्षा', 'पढ़ाई', 'विश्वविद्यालय'],
+        french: ['éducation', 'étude', 'université'],
+        spanish: ['educación', 'estudio', 'universidad']
+    };
+    
+    // Contact patterns
+    const contactPatterns = {
+        english: ['contact', 'email', 'reach', 'connect', 'hire'],
+        telugu: ['సంప్రదించు', 'ఇమెయిల్'],
+        hindi: ['संपर्क', 'ईमेल'],
+        french: ['contact', 'email', 'contacter'],
+        spanish: ['contacto', 'email', 'contactar']
+    };
+    
+    const patterns = [greetingPatterns, projectPatterns, skillPatterns, educationPatterns, contactPatterns];
+    const intents = ['greeting', 'projects', 'skills', 'education', 'contact'];
+    
+    for (let i = 0; i < patterns.length; i++) {
+        const languagePatterns = patterns[i][language] || patterns[i]['english'];
+        if (languagePatterns.some(pattern => lowerMessage.includes(pattern))) {
+            return intents[i];
+        }
+    }
+    
+    return 'general';
+}
+
+// Enhanced response generation system
 function getBotResponse(userMessage) {
     const language = detectLanguage(userMessage);
-    const responses = botResponses[language] || botResponses.english;
+    const intent = analyzeIntent(userMessage, language);
+    const templates = responseTemplates[language] || responseTemplates['english'];
     
-    // Simple keyword-based responses
-    const lowerMessage = userMessage.toLowerCase();
-    
-    if (lowerMessage.includes('project') || lowerMessage.includes('प्रोजेक्ट') || 
-        lowerMessage.includes('প্রকল্প') || lowerMessage.includes('projet') || 
-        lowerMessage.includes('proyecto')) {
-        return responses[Math.floor(Math.random() * Math.min(3, responses.length))];
+    // Context-aware responses based on intent
+    switch (intent) {
+        case 'greeting':
+            return templates.greeting;
+            
+        case 'projects':
+            return generateProjectResponse(userMessage, language, templates);
+            
+        case 'skills':
+            return templates.skills;
+            
+        case 'education':
+            return templates.education;
+            
+        case 'contact':
+            return templates.contact;
+            
+        default:
+            return generateContextualResponse(userMessage, language, templates);
     }
+}
+
+// Generate detailed project responses
+function generateProjectResponse(message, language, templates) {
+    const lowerMessage = message.toLowerCase();
     
-    if (lowerMessage.includes('skill') || lowerMessage.includes('programming') || 
-        lowerMessage.includes('language') || lowerMessage.includes('कौशल')) {
-        return responses[Math.floor(Math.random() * responses.length)];
-    }
-    
-    if (lowerMessage.includes('globle') || lowerMessage.includes('game')) {
+    if (lowerMessage.includes('globle')) {
+        const globleInfo = shreyasBotKnowledge.projects.globle;
         if (language === 'english') {
-            return "The Globle Solver is one of Shreyas's most impressive projects! It uses advanced algorithms like entropy calculation and graph optimization to efficiently solve the geography game Globle.";
+            return `The Globle Solver is fascinating! It's ${globleInfo.description}. Shreyas implemented ${globleInfo.features.join(', ')} using technologies like ${globleInfo.tech.slice(0, 3).join(', ')}. The algorithm achieves ${globleInfo.complexity}. You can check it out at ${globleInfo.github}`;
         }
-        return responses[Math.floor(Math.random() * responses.length)];
     }
     
-    // Default response
-    return responses[0];
+    if (lowerMessage.includes('pacman')) {
+        const pacmanInfo = shreyasBotKnowledge.projects.pacman;
+        if (language === 'english') {
+            return `The Pacman project showcases Shreyas's game development skills! It features ${pacmanInfo.features.join(', ')}. The procedural generation algorithm creates unique mazes every time you play. Unfortunately, it's a ${pacmanInfo.status}, so I can't share the code directly.`;
+        }
+    }
+    
+    if (lowerMessage.includes('bot') || lowerMessage.includes('ai')) {
+        const botInfo = shreyasBotKnowledge.projects.bot;
+        if (language === 'english') {
+            return `That's me! I'm the Shreyas-Bot, ${botInfo.description}. I can communicate in ${botInfo.languages.join(', ')} and I'm built using ${botInfo.tech.join(', ')}. My features include ${botInfo.features.join(', ')}. Pretty cool, right?`;
+        }
+    }
+    
+    return templates.projects;
+}
+
+// Generate contextual responses for complex queries
+function generateContextualResponse(message, language, templates) {
+    const lowerMessage = message.toLowerCase();
+    
+    // Personality questions
+    if (lowerMessage.includes('personality') || lowerMessage.includes('like') || lowerMessage.includes('enjoy')) {
+        return templates.personality;
+    }
+    
+    // Language questions
+    if (lowerMessage.includes('language') && !lowerMessage.includes('programming')) {
+        return templates.languages;
+    }
+    
+    // Goodbye patterns
+    if (lowerMessage.includes('bye') || lowerMessage.includes('goodbye') || lowerMessage.includes('thanks')) {
+        return templates.goodbye || templates.greeting;
+    }
+    
+    // Default to greeting for unrecognized patterns
+    return templates.greeting;
 }
 
 // Open chat modal
@@ -179,7 +350,15 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// Send message functionality
+// Conversation context and memory
+let conversationContext = {
+    previousMessages: [],
+    currentLanguage: 'english',
+    topicsDiscussed: [],
+    userPreferences: {}
+};
+
+// Enhanced send message functionality with typing indicator
 function sendMessage() {
     const message = chatInputField.value.trim();
     if (message === '') return;
@@ -190,23 +369,58 @@ function sendMessage() {
     userMessageDiv.innerHTML = `<p>${message}</p>`;
     chatMessages.appendChild(userMessageDiv);
 
+    // Update conversation context
+    conversationContext.previousMessages.push({
+        type: 'user',
+        message: message,
+        timestamp: new Date()
+    });
+
     // Clear input
     chatInputField.value = '';
 
-    // Add bot response after a short delay
+    // Add typing indicator
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'bot-message typing-indicator';
+    typingIndicator.innerHTML = `
+        <div class="typing-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <p style="margin-top: 5px; font-size: 0.9em; opacity: 0.7;">Shreyas-Bot is typing...</p>
+    `;
+    chatMessages.appendChild(typingIndicator);
+
+    // Scroll to bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Generate response with realistic delay
+    const responseDelay = Math.random() * 1000 + 1500; // 1.5-2.5 seconds
     setTimeout(() => {
+        // Remove typing indicator
+        typingIndicator.remove();
+
+        // Get sophisticated response
         const botResponse = getBotResponse(message);
         const botMessageDiv = document.createElement('div');
         botMessageDiv.className = 'bot-message';
         botMessageDiv.innerHTML = `<p>${botResponse}</p>`;
         chatMessages.appendChild(botMessageDiv);
 
+        // Update context
+        conversationContext.previousMessages.push({
+            type: 'bot',
+            message: botResponse,
+            timestamp: new Date()
+        });
+
+        // Update language preference
+        conversationContext.currentLanguage = detectLanguage(message);
+
         // Scroll to bottom
         chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 1000);
-
-    // Scroll to bottom
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, responseDelay);
 }
 
 if (sendMessageBtn) {
