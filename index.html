@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreyas Kaps - Software Engineer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Shreyas Kaps</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Shreyas Kaps</span></h1>
+                <p class="hero-subtitle">Budding Software Engineer & Problem Solver</p>
+                <p class="hero-description">
+                    Passionate about creating innovative solutions through code. 
+                    I specialize in algorithm design, game development, and AI applications.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="code-animation">
+                    <div class="code-line"></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        I'm a passionate software engineer with a keen interest in solving complex problems 
+                        through innovative programming solutions. My work spans across various domains including 
+                        game development, algorithm optimization, and artificial intelligence.
+                    </p>
+                    <p class="about-description">
+                        I enjoy tackling challenging projects that push the boundaries of what's possible, 
+                        from creating intelligent game solvers to developing multilingual AI assistants.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>3+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h3>5</h3>
+                            <p>Languages Spoken</p>
+                        </div>
+                        <div class="stat">
+                            <h3>∞</h3>
+                            <p>Problems Solved</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="profile-card">
+                        <div class="card-content">
+                            <h3>Shreyas Kaps</h3>
+                            <p>Software Engineer</p>
+                            <div class="languages">
+                                <span class="lang-tag">English</span>
+                                <span class="lang-tag">Telugu</span>
+                                <span class="lang-tag">Hindi</span>
+                                <span class="lang-tag">French</span>
+                                <span class="lang-tag">Spanish</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- Globle Solver Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/shreyaskaps/globle-solver" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Globle Solver</h3>
+                    <p class="project-description">
+                        An intelligent solver for the online geography game Globle. 
+                        Uses advanced algorithms including entropy calculation, distance matrices, 
+                        and graph-based optimization to efficiently guess countries.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Graph Algorithms</span>
+                        <span class="tech-tag">Data Structures</span>
+                        <span class="tech-tag">Optimization</span>
+                    </div>
+                    <div class="project-features">
+                        <ul>
+                            <li>Advanced adjacency graph implementation</li>
+                            <li>Entropy-based decision making</li>
+                            <li>Distance matrix calculations</li>
+                            <li>Intelligent candidate management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pacman Game Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="project-links">
+                            <span class="private-repo">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Pacman with Random Maps</h3>
+                    <p class="project-description">
+                        A fully functional Pacman game featuring dynamically generated maps 
+                        using sophisticated algorithms. Created as part of academic coursework 
+                        to demonstrate game development and procedural generation skills.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Game Development</span>
+                        <span class="tech-tag">Procedural Generation</span>
+                        <span class="tech-tag">Algorithm Design</span>
+                        <span class="tech-tag">Graphics Programming</span>
+                    </div>
+                    <div class="project-features">
+                        <ul>
+                            <li>Procedural map generation algorithm</li>
+                            <li>Classic Pacman gameplay mechanics</li>
+                            <li>AI-driven ghost behavior</li>
+                            <li>Dynamic level progression</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Shreyas-Bot Project -->
+                <div class="project-card featured">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-links">
+                            <button class="project-link chat-btn" onclick="openChat()">
+                                <i class="fas fa-comments"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Shreyas-Bot</h3>
+                    <p class="project-description">
+                        An AI-powered conversational bot trained on my personal texts and communication patterns. 
+                        Capable of responding in multiple languages and mimicking my conversational style 
+                        to answer questions and engage in meaningful dialogue.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Natural Language Processing</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Multilingual AI</span>
+                        <span class="tech-tag">Conversational AI</span>
+                    </div>
+                    <div class="project-features">
+                        <ul>
+                            <li>Trained on personal communication data</li>
+                            <li>Supports 5 languages (EN, TE, HI, FR, ES)</li>
+                            <li>Contextual conversation abilities</li>
+                            <li>Personality-aware responses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">C++</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Technologies & Frameworks</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Machine Learning</span>
+                        <span class="skill-item">Natural Language Processing</span>
+                        <span class="skill-item">Game Development</span>
+                        <span class="skill-item">Algorithm Design</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Specializations</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Graph Algorithms</span>
+                        <span class="skill-item">Optimization</span>
+                        <span class="skill-item">AI/ML Applications</span>
+                        <span class="skill-item">Problem Solving</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">English</span>
+                        <span class="skill-item">Telugu</span>
+                        <span class="skill-item">Hindi</span>
+                        <span class="skill-item">French</span>
+                        <span class="skill-item">Spanish</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>I'm always interested in discussing new opportunities, innovative projects, and collaborative endeavors.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>Available upon request</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/shreyaskaps" target="_blank">github.com/shreyaskaps</a>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-code"></i>
+                            <span>Open to collaborations</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Modal for Shreyas-Bot -->
+    <div id="chat-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-robot"></i> Chat with Shreyas-Bot</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="bot-message">
+                        <p>Hello! I'm Shreyas-Bot. I can chat with you in English, Telugu, Hindi, French, or Spanish. What would you like to know about Shreyas?</p>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input-field" placeholder="Type your message...">
+                    <button id="send-message"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Shreyas Kaps. Built with passion for engineering excellence.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
