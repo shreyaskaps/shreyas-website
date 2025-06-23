@@ -172,4 +172,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Built with ❤️ and lots of ☕ by Shreyas Kaps** 
+**Built with ❤️ and lots of ☕ by Shreyas Kaps**
